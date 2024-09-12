@@ -34,19 +34,26 @@ async def haiku_count_command(ctx):
             for embed in message.embeds:
                 #print('starting to look at embeds')
                 #HaikuBot does not have embed fields.
-                if '- ' in embed.footer.text:
-                    messages.append(embed.footer.text[2:])
+                if embed.footer:
+                    if '- ' in embed.footer.text:
+                        messages.append(embed.footer.text[2:])
     print(messages)
     #sets dictionary counts to null values. 
     haiku_count.clear()
 
+
+
     for message in messages:
         user_id = message
+
         print(user_id)
         if user_id in haiku_count:
             haiku_count[user_id] += 1
         else:
             haiku_count[user_id] = 1
+    #logic for people who changed users. 
+    haiku_count['deadbeat8058']+=haiku_count['DB']
+    del haiku_count['DB']
 
     #Create an embedded message
     embed = Embed(title="Haiku Count", description="", color=0x00ff00)

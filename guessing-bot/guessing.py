@@ -28,5 +28,5 @@ async def on_ready():
     # sample projects: what you did, what you knwo about it 
     #Just hit the hot points and keep going. If this guy is trying to hire an intern, he wants to see CODE. 
 
-bot.run('MTI4MzY2MDM0NzY1NTMyMzczMA.GbKN-a.08FhL96pKgCQPLnnhJkrG4pFCDtToWvRP4fzX8')
-    #Token = MTI4MzY2MDM0NzY1NTMyMzczMA.GORXuQ.AEBreRf596UGpLtRH_b9oWiJy0IjC8FJnz-4pA
+bot.run('MTI4MzY2MDM0NzY1NTMyMzczMA.GngPeb.uC_srlCE5rGYC1C9RjEGADSIot_NEk-iJNLENY')
+    #Token = MTI4MzY2MDM0NzY1NTMyMzczMA.GngPeb.uC_srlCE5rGYC1C9RjEGADSIot_NEk-iJNLENY (We love security here. )

@@ -32,8 +32,6 @@ class HaikuCount(commands.Cog):
         #sets dictionary counts to null values. 
         self.haiku_count.clear()
 
-
-
         for message in messages:
             user_id = message
 

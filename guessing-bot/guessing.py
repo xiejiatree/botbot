@@ -1,9 +1,21 @@
-import discord
-from discord.ext import commands
-from discord import Embed
-import datetime
 import logging
+import sys
 import os
+
+print("Python Path: ", sys.path)
+print("Current Working Directory: ", os.getcwd())
+
+try: 
+    import discord
+    from discord.ext import commands
+    from discord import Embed
+    print("Discord Version: ", discord.__version__ )
+except Exception as e: 
+        print("Import Error ", str(e))
+        print("Python Version: ", sys.version)
+        raise
+
+
 
 logging.basicConfig(level=logging.INFO)
 print(os.getcwd())

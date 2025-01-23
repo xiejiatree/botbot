@@ -30,33 +30,8 @@ jobs:
       - name: Install Python Build Tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-dev python3-setuptools
-      
-      - name: Install and Verify Dependencies
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-          pip install -r guessing-bot/requirements.txt
+          sudo apt-get install -y python3-dev python3-setuptools libffi-dev libnacl-dev
           
-          # Create verification script
-          cat > verify_deployment.py << EOL
-          import sys
-          import os
-          
-          print("Python Path:", sys.path)
-          print("Current Directory:", os.getcwd())
-          
-          try:
-              import discord
-              print("Discord Version:", discord.__version__)
-          except Exception as e:
-              print("Import Error:", str(e))
-          EOL
-          
-          # Run verification script
-          python verify_deployment.py
-
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 

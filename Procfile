@@ -1,0 +1,1 @@
+web: source antenv/bin/activate && python guessing.py

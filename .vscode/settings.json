@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/c46cc103-7176-4b00-8bb5-19225ef7998f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/haiku-counter",
+    "appService.deploySubpath": "."
+}

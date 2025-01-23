@@ -1,7 +1,7 @@
 import logging
 import sys
 import os
-from flask import Flask
+from flask import Flask, jsonify
 import threading
 import discord
 from discord.ext import commands
@@ -12,6 +12,14 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return "Bot is alive!"
+
+# Azure health check endpoint
+@app.route("/health")
+def health_check():
+    return jsonify({
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat()
+    })
 
 print("Python Path: ", sys.path)
 print("Current Working Directory: ", os.getcwd())
@@ -39,7 +47,6 @@ def run_discord_bot():
         print(f'Loaded Extensions: {bot.cogs}')
 
     bot.run('MTI4MzY2MDM0NzY1NTMyMzczMA.GngPeb.uC_srlCE5rGYC1C9RjEGADSIot_NEk-iJNLENY')
-    #Token = MTI4MzY2MDM0NzY1NTMyMzczMA.GngPeb.uC_srlCE5rGYC1C9RjEGADSIot_NEk-iJNLENY (We love security here. )
 
 if __name__ == "__main__":
     # Start the discord bot in a separate thread
@@ -47,5 +54,3 @@ if __name__ == "__main__":
     # Then start the Flask app
     port = int(os.environ.get("PORT", 8000))
     app.run(host="0.0.0.0", port=port)
-
-

@@ -20,22 +20,18 @@ jobs:
       - name: Set up Python version
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
-          
-      - name: Install Python Build Tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y python3-dev python3-setuptools libffi-dev libnacl-dev
+      
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Install and verify dependencies
-        run: |
-          python3 -m pip install -U discord.py
-          
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -69,9 +65,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7A0A3320444443EAB8BA347F7869C18F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4CD58C8CCD5640359E799C327E06E6A9 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3EDD039C6AD44F40A254E6E6E705E2D1 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A12ED64F4C854BE29B44E43BD37599A8 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_228FEFD9DB3A4352A4C8D1AEACBC7645 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DBDE8EE61ED247418AAA9AD8A3EDC55B }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3

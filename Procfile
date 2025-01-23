@@ -1,1 +1,1 @@
-web: source antenv/bin/activate && python guessing.py
+web: source python3 guessing.py

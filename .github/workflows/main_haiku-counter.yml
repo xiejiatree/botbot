@@ -32,15 +32,30 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-dev python3-setuptools
       
-      - name: Install dependencies
+      - name: Install and Verify Dependencies
         run: |
+          python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip install discord.py==2.4.0
-          pip install discord
-          pip list  # Verify installation
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+          pip install -r guessing-bot/requirements.txt
+          
+          # Create verification script
+          cat > verify_deployment.py << EOL
+          import sys
+          import os
+          
+          print("Python Path:", sys.path)
+          print("Current Directory:", os.getcwd())
+          
+          try:
+              import discord
+              print("Discord Version:", discord.__version__)
+          except Exception as e:
+              print("Import Error:", str(e))
+          EOL
+          
+          # Run verification script
+          python verify_deployment.py
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r

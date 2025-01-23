@@ -69,10 +69,12 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_228FEFD9DB3A4352A4C8D1AEACBC7645 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DBDE8EE61ED247418AAA9AD8A3EDC55B }}
 
-      - name: 'Deploy to Azure Web App'
+      - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'haiku-counter'
-          slot-name: 'Production'
+          package: 'release.zip'
+          enable-oryx-build: true
+          runtime-stack: 'PYTHON|3.11'
           

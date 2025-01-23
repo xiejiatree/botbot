@@ -1,1 +1,1 @@
-worker: python guessing.py
+worker: python3 guessing-bot/guessing.py

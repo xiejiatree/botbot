@@ -23,7 +23,10 @@ jobs:
           python-version: '3.11'
 
       - name: Create and start virtual environment
+        env:
+          BOT_TOKEN: ${{secrets.BOT_TOKEN}}
         run: |
+        with: 
           python -m venv venv
           source venv/bin/activate
       
@@ -31,6 +34,7 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+            
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -77,4 +81,6 @@ jobs:
           package: 'release.zip'
           enable-oryx-build: true
           runtime-stack: 'PYTHON|3.11'
+      
+
           
